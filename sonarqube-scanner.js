@@ -9,4 +9,4 @@ scanner(
         },
     },
     () => process.exit()
-);
+)
