@@ -1,27 +1,23 @@
-
 pipeline {
-	agent any
-		stages {
-		stage('One') {
-			steps {
-				echo 'I am executing stage 1'
-			}
-		}
-		stage('Two') {
-			steps {
-				input('In pipeline, We take decision. Can we proceed?')
-			}
-		}
-		stage('Three') {
-
-			steps {
-				echo "Running Stage Three"
-			}
-		}
-		stage('Four') {       
-			steps {
-			echo "Running another test job"
-			}        
-		}
-	}
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
+    }
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+       stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+    }
 }
