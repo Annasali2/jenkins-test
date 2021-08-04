@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:latest'
+            image 'node:lts'
             args '-p 3000:3000'
         }
     }
@@ -11,5 +11,6 @@ pipeline {
                 sh 'npm install'
             }
         }
+
     }
 }
