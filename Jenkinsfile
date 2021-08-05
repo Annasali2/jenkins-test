@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Back-end') {
+        stage('Image Build') {
             agent { dockerfile true }
             steps {
                 sh 'node --version'
