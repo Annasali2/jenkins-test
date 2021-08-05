@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('Back-end') {
+            agent { dockerfile true }
+            steps {
+                sh 'node --version'
+            }
+        }
         stage('Host') {
             steps {
                 nodejs('NodeJS'){
@@ -8,12 +14,6 @@ pipeline {
                     sh' npm build'
                     sh' npm start'
                 } 
-            }
-        }
-        stage('Image Build') {
-            agent { dockerfile true }
-            steps {
-                sh 'node --version'
             }
         }
     }
