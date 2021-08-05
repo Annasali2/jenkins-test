@@ -12,7 +12,6 @@ pipeline {
                 nodejs('NodeJS'){
                     sh 'npm install'
                     sh' npm build'
-                    sh' npm start'
                 } 
             }
         }
