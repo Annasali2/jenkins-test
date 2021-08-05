@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment { 
+        registry = "annastkxel/getting-started" 
+        registryCredential = 'boogeytkxel' 
+        dockerImage = '' 
+    }
     stages {
         stage('Image Build') {
             agent { dockerfile true }
