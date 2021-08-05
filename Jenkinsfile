@@ -9,5 +9,13 @@ pipeline {
                 } 
             }
         }
+        stage('building image') {
+            agent {
+                docker { dockerfile true }
+            }
+            steps {
+                sh 'node --version'
+            }
+        }
     }
 }
