@@ -6,6 +6,12 @@ pipeline {
         dockerImage = '' 
     }
     stages {
+        stage('Image Build') {
+            agent { dockerfile true }
+            steps {
+                sh 'node --version'
+            }
+        }
         stage('Host') {
             steps {
                 nodejs('NodeJS'){
