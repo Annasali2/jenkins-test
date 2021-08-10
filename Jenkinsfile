@@ -20,17 +20,12 @@ pipeline {
                 } 
             }
         }
-        stage('Cloning our Git') { 
-            steps { 
-                git 'https://github.com/Annasali2/jenkins-test.git' 
+        stage('Host') {
+            steps {
+                nodejs('NodeJS'){
+                    sh 'node sonarqube-scanner.js'
+                } 
             }
-        } 
-        stage('Building our image') { 
-            steps { 
-                script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-                }
-            } 
         }
     }
 }
